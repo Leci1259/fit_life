@@ -16,7 +16,16 @@ router.get("/", (req, res) => {
         });
 });
 
-//get workouts in range
+//get all workouts
+router.get("/range", (req, res) => {
+    Plans.find({})
+        .then(dbFitlife => {
+            res.json(dbFitlife);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+});
 
 //put request
 router.put("/", (req, res) => {
