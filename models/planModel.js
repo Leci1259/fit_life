@@ -38,8 +38,24 @@ const planSchema = new Schema({
             }
         }
     ],
+},
+    {
+        toJSON: {
+            // include any virtual properties when data is requested
+            //will keep values for stats page
+            virtuals: true
+        },
+    }
+);
 
-});
+planSchema.virtual("totalDuration").get(() => {
+    //use reduce method to go through array and get total duration
+    const duration = this.exercises.reduce((total, exercise) => {
+        return total + exercise.duration;
+    }, 0);
+
+    return duration;
+})
 
 const Plan = mongoose.model("Plan", planSchema);
 
