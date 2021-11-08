@@ -15,9 +15,10 @@ router.get("/", (req, res) => {
         });
 });
 
-//get all workouts
+//get range of  workouts
 router.get("/range", (req, res) => {
     Plans.find({})
+        .limit(7)
         .then(dbFitlife => {
             res.json(dbFitlife);
         })
@@ -27,9 +28,9 @@ router.get("/range", (req, res) => {
 });
 
 //put request
-router.put("/", (req, res) => {
+router.put("/:id", (req, res) => {
     Plans.findByIdAndUpdate(
-        params.id,
+        { _id: req.params.id },
         {
             $push:
                 { exercises: req.body }
@@ -45,7 +46,7 @@ router.put("/", (req, res) => {
 
 //post request
 router.post("/", (req, res) => {
-    Plans.insertMany(req.body)
+    Plans.create(req.body)
         .then(dbFitlife => {
             res.json(dbFitlife);
         })
