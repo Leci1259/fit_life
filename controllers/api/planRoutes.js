@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { route } = require(".");
 const Plans = require('../../models/planModel');
 
 
@@ -55,3 +54,4 @@ router.post("/", (req, res) => {
         });
 })
 
+module.exports = router;

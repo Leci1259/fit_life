@@ -1,4 +1,5 @@
-var path = require("path");
+const path = require("path");
+const app = require('express').Router();
 
 app.get("/exercise", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/exercise.html"));
