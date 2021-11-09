@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const Plans = require('../../models/planModel');
-
+const mongoose = require("mongoose");
 
 //get last workout
 router.get("/", (req, res) => {
     Plans.find({})
         .sort({ date: -1 })
-        .limit(1)
+        // .limit(1)
         .then(dbFitlife => {
             res.json(dbFitlife);
         })
@@ -34,7 +34,9 @@ router.put("/:id", (req, res) => {
         {
             $push:
                 { exercises: req.body }
-        }
+        },
+        { new: true }
+
     )
         .then(dbFitlife => {
             res.json(dbFitlife);
@@ -46,7 +48,7 @@ router.put("/:id", (req, res) => {
 
 //post request
 router.post("/", (req, res) => {
-    Plans.create(req.body)
+    Plans.create({})
         .then(dbFitlife => {
             res.json(dbFitlife);
         })
