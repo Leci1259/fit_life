@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Plans = require('../../models/planModel');
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); ``
 
 //get last workout
 router.get("/", (req, res) => {
