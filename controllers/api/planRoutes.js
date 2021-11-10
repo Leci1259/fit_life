@@ -3,21 +3,34 @@ const Plans = require('../../models/planModel');
 const mongoose = require("mongoose"); ``
 
 //get last workout
-router.get("/", (req, res) => {
-    Plans.find({})
+router.get("/", async (req, res) => {
+    await Plans.aggregate([
+        {
+            $addFields: {
+                totalDuration: { $sum: "$exercises.duration" },
+            },
+        },
+    ])
         .sort({ date: -1 })
-        // .limit(1)
-        .then(dbFitlife => {
+        .limit(1)
+        .then((dbFitlife) => {
             res.json(dbFitlife);
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(400).json(err);
         });
 });
 
 //get range of  workouts
-router.get("/range", (req, res) => {
-    Plans.find({})
+router.get("/range", async (req, res) => {
+    await Plans.aggregate([
+        {
+            $addFields: {
+                totalDuration: { $sum: "$exercises.duration" },
+            },
+        },
+    ])
+        .sort({ date: -1 })
         .limit(7)
         .then(dbFitlife => {
             res.json(dbFitlife);
