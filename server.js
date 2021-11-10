@@ -17,11 +17,13 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitlifedb", {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
 });
 
 //routes
-app.use(require("./controllers/index"))
+app.use(require("./controllers/index.js"))
 
 //listen
 app.listen(PORT, () => {

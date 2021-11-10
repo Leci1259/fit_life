@@ -48,11 +48,12 @@ router.put("/:id", (req, res) => {
 
 //post request
 router.post("/", ({ body }, res) => {
-    Plans.create({})
+    Plans.create(body)
         .then(dbFitlife => {
             res.json(dbFitlife);
         })
         .catch(err => {
+            console.log("err=", err)
             res.status(400).json(err);
         });
 })

@@ -6,7 +6,7 @@ const planSchema = new Schema({
     // CODE HERE
     day: {
         type: Date,
-        default: Date.now
+        default: () => new Date()
     },
     exercises: [
         {
@@ -50,11 +50,13 @@ const planSchema = new Schema({
 
 planSchema.virtual("totalDuration").get(() => {
     //use reduce method to go through array and get total duration
-    const duration = this.exercises.reduce((total, exercise) => {
-        return total + exercise.duration;
-    }, 0);
+    if (this.exercises) {
+        const duration = this.exercises.reduce((total, exercise) => {
+            return total + exercise.duration;
+        }, 0);
 
-    return duration;
+        return duration;
+    };
 })
 
 const Plan = mongoose.model("Plan", planSchema);

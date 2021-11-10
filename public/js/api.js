@@ -31,7 +31,6 @@ const API = {
     });
 
     const json = await res.json();
-
     return json;
   },
 
