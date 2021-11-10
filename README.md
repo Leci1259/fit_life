@@ -36,7 +36,7 @@ Personal usage
 
 ## Application
 
-![[Application Preview]()]()
+![[Application Preview](https://github.com/Leci1259/fit_life/blob/main/public/img/fitLife.jpg)](https://github.com/Leci1259/fit_life/blob/main/public/img/fitLifeSS.mp4)
 
 ## Contribution
 
