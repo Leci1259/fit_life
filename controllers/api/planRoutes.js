@@ -47,7 +47,7 @@ router.put("/:id", (req, res) => {
 })
 
 //post request
-router.post("/", (req, res) => {
+router.post("/", ({ body }, res) => {
     Plans.create({})
         .then(dbFitlife => {
             res.json(dbFitlife);
