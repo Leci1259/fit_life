@@ -6,7 +6,7 @@ const planSchema = new Schema({
     // CODE HERE
     day: {
         type: Date,
-        default: () => new Date()
+        default: () => new Date(),
     },
     exercises: [
         {

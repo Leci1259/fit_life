@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
             },
         },
     ])
-        .sort({ date: -1 })
-        .limit(1)
+        // .sort({ date: -1 })
+        // .limit(1)
         .then((dbFitlife) => {
             res.json(dbFitlife);
         })
